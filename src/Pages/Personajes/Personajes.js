@@ -1,43 +1,43 @@
 import React from "react";
-import CardApp from "./Personajes";
-import { Container } from "react-bootstrap";
-import Hansolo from "../../images/han-solo.jpg";
-import c3po from '../../images/c3po.jpg';
-import Chewbacca from "../../images/chewbacca.jpg";
+import "./Personajes";
+import { ListGroup } from "react-bootstrap";
+import Card from "react-bootstrap/Card"
+import Button from "react-bootstrap/Button";
+import "../Planetas/planets.css";
 
-const Tarjeta = [
-    {
-        Id: 1,
-        Titulo: "C3PO",
-        Imagen: c3po,
-        Texto: "Personaje 1",
-        Boton: "Ver más de C3PO"
-    },
 
-    {
-        Id: 2,
-        Titulo: "Han Solo",
-        Imagen: Hansolo,
-        Texto: "Personaje 2",
-        Boton: "Ver más de Han Solo"
-    },
-    {
-        Id: 3,
-        Titulo: "Chewbacca",
-        Imagen: Chewbacca,
-        Texto: "Personaje 3",
-        Boton: "Ver más de Chewbacca"
-    },
-];
-
-const Cprops = () => {
+export const Tarjeta = ({
+        nombre,
+        cabello,
+        ojos,
+        piel,
+        genero,
+        altura,
+        peso,
+        cumpleaños,
+        BbYoda,
+}) => {
     return(
-        <Container className="d-flex flex-wrap justify-content-between" >
-            {Tarjeta.map((Card1)=>(
-                <CardApp key={Card1.Id} title={Card1.Titulo} image={Card1.Imagen} text={Card1.Texto} btn={Card1.Boton}></CardApp>
-            ))}
-        </Container>
+        <Card style={{width: "18rem", borderRadius:"12px", background: "black"}}
+        className="m-2 text-center" >
+            <Card.Body className="card-body" style={{borderRadius:"12px"}}>
+                <Card.Title className="card.title">
+                    {nombre}
+                </Card.Title>
+                <Card.Img src={BbYoda} style={{marginBottom:"5px"}}></Card.Img>
+                <ListGroup>
+                <ListGroup.Item className="lista"><b>Color de Cabello: </b> {cabello}</ListGroup.Item>
+                <ListGroup.Item className="lista"><b>Color de ojos: </b> {ojos}</ListGroup.Item>
+                <ListGroup.Item className="lista"><b>Color de piel: </b> {piel}</ListGroup.Item>
+                <ListGroup.Item className="lista"><b>Genero: </b> {genero}</ListGroup.Item>
+                <ListGroup.Item className="lista"><b>Altura: </b> {altura}</ListGroup.Item>
+                <ListGroup.Item className="lista"><b>Peso: </b> {peso}</ListGroup.Item>
+                <ListGroup.Item className="lista"><b>Cumpleaños: </b> {cumpleaños}</ListGroup.Item>
+            </ListGroup>
+            </Card.Body>
+            <Button className="BtnCard"><p style={{marginBottom:"auto"}}>Detalles del personaje </p> {nombre}</Button>
+        </Card>
+        
     );
-};
-
-export default Cprops;
+    };
+export default Tarjeta;

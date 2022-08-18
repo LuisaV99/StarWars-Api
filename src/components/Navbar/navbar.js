@@ -4,7 +4,7 @@ import "./navbar.css";
 import Navbar from 'react-bootstrap/navbar';
 import Nav from 'react-bootstrap/nav';
 import Logo from "../../images/logo-sw-.png";
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 // import { Collapse } from "react-bootstrap";
 
 function NavbarApp() {
@@ -21,14 +21,13 @@ function NavbarApp() {
           <Navbar.Toggle aria-controls="basic-navbar-nav"/>
         <Navbar.Collapse className="justify-content-end">
           <Nav>
-          <Link className="nav-link" style={{color:"white"}} to="/">Inicio</Link>
-          <Link className="nav-link" style={{color:"white"}}>Capitulo</Link>
-          <Link className="nav-link" style={{color:"white"}}to="/page">Personajes</Link>
-          <Link className="nav-link" style={{color:"white"}} to="/page">Planetas</Link>
+          <NavLink className='nav-link' style={{color: "white"}}  to="/">Inicio</NavLink>
+          <NavLink className='nav-link' style={{color: "white"}} to="/Personajes">Personajes</NavLink>
+          <NavLink className='nav-link' style={{color: "white"}} to="/Planetas">Planetas</NavLink>
           </Nav>
-          <Navbar.Text>
+          {/* <Navbar.Text>
             Signed in as: <a href="#login">Mark Otto</a>
-          </Navbar.Text>
+          </Navbar.Text> */}
         </Navbar.Collapse>
     </Navbar>
   );

@@ -1,19 +1,30 @@
-import Card from 'react-bootstrap/Card';
+import { useEffect } from "react";
+import { UsePlanets } from "../../Hooks/UsePlanets";
+import TarjetaPlanet from "./Planetas"
+import Hansolo from "../../images/han-solo.jpg";
 
-function CardPerson() {
-  return (
-    <Card className="bg-dark text-white">
-      <Card.Img src="holder.js/100px270" alt="Card image" />
-      <Card.ImgOverlay>
-        <Card.Title>Card title</Card.Title>
-        <Card.Text>
-          This is a wider card with supporting text below as a natural lead-in
-          to additional content. This content is a little bit longer.
-        </Card.Text>
-        <Card.Text>Last updated 3 mins ago</Card.Text>
-      </Card.ImgOverlay>
-    </Card>
+const Planetas = () => {
+  const {getAllPlanets, dataPlanets} = UsePlanets();
+  useEffect(()=>{
+    getAllPlanets();
+    console.log(dataPlanets);
+  },[]);
+  return(
+    <div>
+      <h2 style={{textAlign:"center", textShadow:"0 0 4px #FFE919", fontWeight:"bolder", fontSize:"xxx-large"}}>Listado de Planetas</h2>
+      <div className="d-flex justify-content-center flex-wrap container-fluid">
+        {dataPlanets.map((planets)=> (
+          <TarjetaPlanet
+          key={planets.name}
+          planeta={planets.name}
+          clima={planets.climate}
+          terreno={planets.terrain}
+          creacion={planets.created}
+          HanSolo={Hansolo}
+          />
+        ))}
+      </div>
+    </div>
   );
-}
-
-export default CardPerson;
+};
+export default Planetas;

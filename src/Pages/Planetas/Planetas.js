@@ -1,43 +1,45 @@
 // import react from 'react'
-import CardPerson from "./index";
-import { Container } from "react-bootstrap";
-import Hansolo from "../../images/han-solo.jpg";
-import c3po from '../../images/c3po.jpg';
-import Chewbacca from "../../images/chewbacca.jpg";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
+import {ListGroup} from "react-bootstrap";
+import "./planets.css";
 
-const Tarjeta = [
-    {
-        Id: 1,
-        Titulo: "C3PO",
-        Imagen: c3po,
-        Texto: "Personaje 1",
-        Boton: "Ver más de C3PO"
-    },
 
-    {
-        Id: 2,
-        Titulo: "Han Solo",
-        Imagen: Hansolo,
-        Texto: "Personaje 2",
-        Boton: "Ver más de Han Solo"
-    },
-    {
-        Id: 3,
-        Titulo: "Chewbacca",
-        Imagen: Chewbacca,
-        Texto: "Personaje 3",
-        Boton: "Ver más de Chewbacca"
-    },
-];
-
-const Cprops = () => {
+export const TarjetaPlanet = ({
+        planeta,
+        clima,
+        terreno,
+        creacion,
+        HanSolo,
+}) => {
     return(
-        <Container className="d-flex flex-wrap justify-content-between" >
-            {Tarjeta.map((Card1)=>(
-                <CardPerson key={Card1.Id} title={Card1.Titulo} image={Card1.Imagen} text={Card1.Texto} btn={Card1.Boton}></CardPerson>
-            ))}
-        </Container>
+        <Card style={{width: "18rem", borderRadius:"12px", background: "black"}}
+        className="m-2 text-center" >
+            <Card.Body className="card-body" style={{borderRadius:"12px"}}>
+                <Card.Title className="card.title"><b>Planeta </b>
+                    {planeta}
+                </Card.Title>
+                <Card.Img src={HanSolo} style={{marginBottom:"10px"}}></Card.Img>
+                <ListGroup>
+                <ListGroup.Item className="lista"><b>Clima: </b> {clima}</ListGroup.Item>
+                <ListGroup.Item className="lista"><b>Terreno: </b> {terreno}</ListGroup.Item>
+                <ListGroup.Item className="lista"><b>Fecha de Creación: </b> {creacion}</ListGroup.Item>
+            </ListGroup>
+            <Button className="BtnCard"><p style={{marginBottom:"auto"}}>Detalles del personaje </p> {planeta}</Button>
+            </Card.Body>
+        </Card>
     );
-};
+    };
+export default TarjetaPlanet;
 
-export default Cprops;
+// const Cprops = () => {
+//     return(
+//         <Container className="d-flex flex-wrap justify-content-between" >
+//             {Tarjeta.map((Card1)=>(
+//                 <CardPerson key={Card1.Id} title={Card1.Titulo} image={Card1.Imagen} text={Card1.Texto} btn={Card1.Boton}></CardPerson>
+//             ))}
+//         </Container>
+//     );
+// };
+
+// export default Cprops;
