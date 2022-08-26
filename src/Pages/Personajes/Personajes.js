@@ -1,9 +1,10 @@
 import React from "react";
-import "./Personajes";
+// import "./Personajes";
 import { ListGroup } from "react-bootstrap";
 import Card from "react-bootstrap/Card"
 import Button from "react-bootstrap/Button";
 import "../Planetas/planets.css";
+import { Link } from "react-router-dom";
 
 
 export const Tarjeta = ({
@@ -16,6 +17,9 @@ export const Tarjeta = ({
         peso,
         cumpleaños,
         BbYoda,
+        keyName,
+        num,
+        nombres
 }) => {
     return(
         <Card style={{width: "18rem", borderRadius:"12px", background: "black"}}
@@ -26,7 +30,7 @@ export const Tarjeta = ({
                 </Card.Title>
                 <Card.Img src={BbYoda} style={{marginBottom:"5px"}}></Card.Img>
                 <ListGroup>
-                <ListGroup.Item className="lista"><b>Color de Cabello: </b> {cabello}</ListGroup.Item>
+                <ListGroup.Item ><b>Color de Cabello: </b> {cabello}</ListGroup.Item>
                 <ListGroup.Item className="lista"><b>Color de ojos: </b> {ojos}</ListGroup.Item>
                 <ListGroup.Item className="lista"><b>Color de piel: </b> {piel}</ListGroup.Item>
                 <ListGroup.Item className="lista"><b>Genero: </b> {genero}</ListGroup.Item>
@@ -35,7 +39,9 @@ export const Tarjeta = ({
                 <ListGroup.Item className="lista"><b>Cumpleaños: </b> {cumpleaños}</ListGroup.Item>
             </ListGroup>
             </Card.Body>
-            <Button className="BtnCard"><p style={{marginBottom:"auto"}}>Detalles del personaje </p> {nombre}</Button>
+            <Link to={`/detailsperson/${nombre}/${num}`} key={keyName}>
+<Button className="BtnCard"><p style={{marginBottom:"5px"}}>Detalles de</p>{nombre} </Button>
+        </Link>
         </Card>
         
     );

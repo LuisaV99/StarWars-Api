@@ -1,12 +1,44 @@
 .card-body {
   background: black;
   color: whitesmoke;
+  border-radius: 33px;
 }
 .card-title {
   background: black;
   color: #7540ff;
   font-size:x-large;
   text-shadow: ghostwhite(250 250 249) 0px 0px 23px
+}
+.Cards1{
+  display: flex;
+  justify-content: center;
+}
+.Boton-ini{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Details-Character{
+  color: whitesmoke;
+  text-shadow: 0 0 60px #7540ff;
+  font-weight: bolder;
+}
+.tabla{
+  color: #7540ff;
+}
+.detalle2{
+  color: #7540ff;
+  font-size: medium;
+  font-weight: bolder;
+}
+.films{
+  color: whitesmoke;
+}
+.Table-1{
+  color: #7540ff;
+}
+.tablabody{
+  color: whitesmoke;
 }
 .lista {
   background: black;

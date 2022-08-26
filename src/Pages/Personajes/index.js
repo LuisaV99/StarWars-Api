@@ -28,6 +28,9 @@ const CardApp = () =>{
           cumpleaños={people.birth_year}
           estiloBoton={people.eye_color}
           BbYoda={BbYoda}
+          keyName={people.name}
+          nombres={people.name}
+          num={Contador}
           />
       ))}
       </div>
