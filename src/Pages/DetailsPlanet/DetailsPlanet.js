@@ -2,18 +2,17 @@ import React, {useEffect} from "react";
 // import { unicoPersonaje } from "./funcion";
 // import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import img from "../../images/Portada.jpg";
+import img from "../../images/alderaan.jpeg";
 import { BsArrowLeftCircleFill } from "react-icons/bs";
 import { UsePerson } from "../../Hooks/UsePerson";
 import { UsePlanets } from "../../Hooks/UsePlanets";
 import { useParams } from "react-router-dom";
-import Table from "react-bootstrap/Table";
 import { ListGroup } from "react-bootstrap";
 import "./details.css";
 
-const Detalles = () => {
-  const { back, getAllPeople, dataPeople } = UsePerson();
-  const { getDataApi, dataApi } = UsePlanets();
+const DetallesPlanets = () => {
+  const { back, getAllPlanets, dataPlanets } = UsePlanets();
+  const { getPlanetPerson } = UsePerson();
 
   const params = useParams();
   const listParams = [params];
@@ -24,19 +23,13 @@ const Detalles = () => {
   var numero = mapeo2[0];
 
   useEffect(() => {
-    getAllPeople(numero);
+    getAllPlanets(numero);
   }, []);
   // console.log(numero);
 
-  const filtro = dataPeople.filter((saludos) => saludos.name === nombre);
+  const filtro = dataPlanets.filter((saludos) => saludos.name === nombre);
   // console.log(filtro);
 
-  const mapeo3 = filtro.map((per) => per.homeworld);
-  var homeWorld = mapeo3[0];
-  console.log(homeWorld);
-  useEffect(() => {
-    getDataApi(homeWorld);
-  }, [dataApi]);
 
     // const [detalles, setDetalles] = useState(null)
 
@@ -80,30 +73,26 @@ const Detalles = () => {
             }}
             className="m-2 text-center"
           >
-            {filtro.map((persona) => (
-              <div key={persona.name}>
+            {filtro.map((planeta) => (
+              <div key={planeta.name}>
                 <h1 className="Details-Character">DETALLES DEL PERSONAJE </h1>
                 <div></div>
                 <ListGroup.Item className="tabla" style={{
-              background: "black",}}><b>Nacimiento: </b> <b> {persona.birth_year}</b></ListGroup.Item><br></br>
+              background: "black",}}><b>Nacimiento: </b> <b> {planeta.rotation_period}</b></ListGroup.Item><br></br>
               <ListGroup.Item className="tabla" style={{
-              background: "black",}}><b>Editado: </b> <b> {persona.edited}</b></ListGroup.Item><br></br>
+              background: "black",}}><b>Editado: </b> <b> {planeta.orbital_period}</b></ListGroup.Item><br></br>
               <ListGroup.Item className="tabla" style={{
-              background: "black",}}><b>Creado: </b> <b> {persona.created}</b></ListGroup.Item><br></br>
+              background: "black",}}><b>Creado: </b> <b> {planeta.diameter}</b></ListGroup.Item><br></br>
                 <ListGroup.Item className="tabla" style={{
-              background: "black",}}><b>Color Ojos: </b> <b> {persona.eye_color}</b></ListGroup.Item><br></br>
+              background: "black",}}><b>Color Ojos: </b> <b> {planeta.climate}</b></ListGroup.Item><br></br>
               <ListGroup.Item className="tabla" style={{
-              background: "black",}}><b>Genero: </b> <b> {persona.gender}</b></ListGroup.Item><br></br>
+              background: "black",}}><b>Genero: </b> <b> {planeta.gravity}</b></ListGroup.Item><br></br>
               <ListGroup.Item className="tabla" style={{
-              background: "black",}}><b>Color Cabello: </b> <b> {persona.hair_color}</b></ListGroup.Item><br></br>
+              background: "black",}}><b>Color Cabello: </b> <b> {planeta.terrain}</b></ListGroup.Item><br></br>
                 <ListGroup.Item className="tabla" style={{
-              background: "black",}}><b>Estatura: </b> <b> {persona.height}</b></ListGroup.Item><br></br>
+              background: "black",}}><b>Estatura: </b> <b> {planeta.surface_water}</b></ListGroup.Item><br></br>
               <ListGroup.Item className="tabla" style={{
-              background: "black",}}><b>Peso: </b> <b> {persona.mass}</b></ListGroup.Item><br></br>
-              <ListGroup.Item className="tabla" style={{
-              background: "black",}}><b>Color Piel: </b> <b> {persona.skin_color}</b></ListGroup.Item><br></br>
-              <ListGroup.Item className="tabla" style={{
-              background: "black",}}><b>Planetas: </b> <b> {homeWorld}</b></ListGroup.Item><br></br>
+              background: "black",}}><b>Peso: </b> <b> {planeta.population}</b></ListGroup.Item><br></br>
                 
               </div>
             ))}
@@ -120,10 +109,10 @@ const Detalles = () => {
             }}
             className="m-2 text-center"
           >
-            {filtro.map((persona) => (
-              <div key={persona.name}>
-                <h1 className="detalle2">PELICULAS</h1>
-                <p className="films">{persona.films}</p>
+            {filtro.map((planeta) => (
+              <div key={planeta.name}>
+                <h1 className="detalle2">RESIDENTES</h1>
+                <p className="films">{planeta.residents}</p>
               </div>
             ))}
           </Card>
@@ -137,10 +126,10 @@ const Detalles = () => {
             }}
             className="m-2 text-center"
           >
-            {filtro.map((persona) => (
-              <div key={persona.name}>
-                <h1 className="detalle2">VEHICULOS</h1>
-                <p className="films">Vehiculo1</p>
+            {filtro.map((planeta) => (
+              <div key={planeta.name}>
+                <h1 className="detalle2">PELICULAS</h1>
+                <p className="films">{planeta.films}</p>
               </div>
             ))}
           </Card>
@@ -155,10 +144,12 @@ const Detalles = () => {
             }}
             className="m-2 text-center"
           >
-            {filtro.map((persona) => (
-              <div key={persona.name}>
-                <h1 className="detalle2">NAVES</h1>
-                <p className="films">Films</p>
+            {filtro.map((planeta) => (
+              <div key={planeta.name}>
+                <h1 className="detalle2">CREADO</h1>
+                <p className="films">{planeta.created}</p>
+                <h1 className="detalle2">EDITADO</h1>
+                <p className="films">{planeta.edited}</p>
               </div>
             ))}
           </Card>
@@ -166,7 +157,7 @@ const Detalles = () => {
       </>
     );
   };
-  export default Detalles;
+  export default DetallesPlanets;
 
 
 
