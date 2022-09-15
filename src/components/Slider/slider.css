@@ -1,6 +1,6 @@
 .img{
     height: 820px;
-    width: 1580px;
+    width: inherit;
     align-items: center;
     margin-bottom: 55px;
 }

@@ -12,7 +12,7 @@ import { ListGroup } from "react-bootstrap";
 import "./details.css";
 
 const Detalles = () => {
-  const { back, getAllPeople, dataPeople } = UsePerson();
+  const { back, getAllPeople, dataPeople, getDetailPeople, dataDetail } = UsePerson();
   const { getDataApi, dataApi } = UsePlanets();
 
   const params = useParams();
@@ -34,9 +34,8 @@ const Detalles = () => {
   const mapeo3 = filtro.map((per) => per.homeworld);
   var homeWorld = mapeo3[0];
   console.log(homeWorld);
-  useEffect(() => {
-    getDataApi(homeWorld);
-  }, [dataApi]);
+  getDetailPeople(homeWorld);
+  
 
     // const [detalles, setDetalles] = useState(null)
 
@@ -55,7 +54,7 @@ const Detalles = () => {
             />
           </button>
 
-          <h1 className="title">{nombre}</h1>
+          <h1 className="title">Detalles Del Personaje {nombre}</h1>
         </div>
         <div className="Cards1">
           <Card
@@ -68,7 +67,13 @@ const Detalles = () => {
             className="m-2 text-center"
           >
             <Card.Body className="Body-C">
-              <Card.Img src={img} ></Card.Img>
+              <Card.Img 
+              style={{
+                width: "15rem",
+                background: "black",
+                marginTop: "10px"
+              }}
+              src={img} ></Card.Img>
             </Card.Body>
           </Card>
           <Card
@@ -82,12 +87,10 @@ const Detalles = () => {
           >
             {filtro.map((persona) => (
               <div key={persona.name}>
-                <h1 className="Details-Character">DETALLES DEL PERSONAJE </h1>
+                <h1 className="Details-Character">.. </h1>
                 <div></div>
                 <ListGroup.Item className="tabla" style={{
               background: "black",}}><b>Nacimiento: </b> <b> {persona.birth_year}</b></ListGroup.Item><br></br>
-              <ListGroup.Item className="tabla" style={{
-              background: "black",}}><b>Editado: </b> <b> {persona.edited}</b></ListGroup.Item><br></br>
               <ListGroup.Item className="tabla" style={{
               background: "black",}}><b>Creado: </b> <b> {persona.created}</b></ListGroup.Item><br></br>
                 <ListGroup.Item className="tabla" style={{
@@ -103,7 +106,7 @@ const Detalles = () => {
               <ListGroup.Item className="tabla" style={{
               background: "black",}}><b>Color Piel: </b> <b> {persona.skin_color}</b></ListGroup.Item><br></br>
               <ListGroup.Item className="tabla" style={{
-              background: "black",}}><b>Planetas: </b> <b> {homeWorld}</b></ListGroup.Item><br></br>
+              background: "black",}}><b>Planetas: </b> <b> {dataDetail.name}</b></ListGroup.Item><br></br>
                 
               </div>
             ))}
@@ -112,7 +115,7 @@ const Detalles = () => {
         <div className="Cards1">
           <Card
             style={{
-              width: "14rem",
+              width: "23rem",
               border: "solid 3px #5E9CC8",
               background: "black",
               height: "176px",
@@ -129,7 +132,7 @@ const Detalles = () => {
           </Card>
           <Card
             style={{
-              width: "14rem",
+              width: "18rem",
               border: "solid 3px #5E9CC8",
               background: "black",
               height: "176px",
@@ -140,14 +143,14 @@ const Detalles = () => {
             {filtro.map((persona) => (
               <div key={persona.name}>
                 <h1 className="detalle2">VEHICULOS</h1>
-                <p className="films">Vehiculo1</p>
+                <p className="films">{persona.vehicles}</p>
               </div>
             ))}
           </Card>
 
           <Card
             style={{
-              width: "14rem",
+              width: "16rem",
               border: "solid 3px #5E9CC8",
               background: "black",
               height: "176px",
@@ -158,7 +161,7 @@ const Detalles = () => {
             {filtro.map((persona) => (
               <div key={persona.name}>
                 <h1 className="detalle2">NAVES</h1>
-                <p className="films">Films</p>
+                <p className="films">{persona.starships}</p>
               </div>
             ))}
           </Card>

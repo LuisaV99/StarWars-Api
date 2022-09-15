@@ -48,7 +48,7 @@ const DetallesPlanets = () => {
             />
           </button>
 
-          <h1 className="title">{nombre}</h1>
+          <h1 className="title">Detalles De {nombre}</h1>
         </div>
         <div className="Cards1">
           <Card
@@ -61,7 +61,7 @@ const DetallesPlanets = () => {
             className="m-2 text-center"
           >
             <Card.Body className="Body-C">
-              <Card.Img src={img} ></Card.Img>
+              <Card.Img src={img} style={{height:"23rem"}}></Card.Img>
             </Card.Body>
           </Card>
           <Card
@@ -75,8 +75,7 @@ const DetallesPlanets = () => {
           >
             {filtro.map((planeta) => (
               <div key={planeta.name}>
-                <h1 className="Details-Character">DETALLES DEL PERSONAJE </h1>
-                <div></div>
+                <h1 className="Details-Character">..</h1>
                 <ListGroup.Item className="tabla" style={{
               background: "black",}}><b>Nacimiento: </b> <b> {planeta.rotation_period}</b></ListGroup.Item><br></br>
               <ListGroup.Item className="tabla" style={{
@@ -101,7 +100,7 @@ const DetallesPlanets = () => {
         <div className="Cards1">
           <Card
             style={{
-              width: "14rem",
+              width: "31rem",
               border: "solid 3px #5E9CC8",
               background: "black",
               height: "176px",
@@ -118,7 +117,7 @@ const DetallesPlanets = () => {
           </Card>
           <Card
             style={{
-              width: "14rem",
+              width: "16rem",
               border: "solid 3px #5E9CC8",
               background: "black",
               height: "176px",

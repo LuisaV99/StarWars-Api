@@ -20,7 +20,7 @@ export const TarjetaPlanet = ({
     return(
         <Card style={{width: "18rem", borderRadius:"12px", background: "black"}}
         className="m-2 text-center" >
-            <Card.Body className="card-body" style={{borderRadius:"12px"}}>
+            <Card.Body className="card-bodyp" style={{borderRadius:"12px"}}>
                 <Card.Title className="card.title">
                     {planeta}
                 </Card.Title>
